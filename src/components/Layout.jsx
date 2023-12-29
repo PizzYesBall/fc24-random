@@ -1,26 +1,16 @@
 import { PropTypes } from 'mobx-react';
+import { Loader } from './Loader';
+import { List } from './List';
 
-const Layout = ({ teams, loading }) => {
-	console.log('loading', loading);
-	return loading ? (
-		<div
-			style={{
-				width: '100vw',
-				height: '100vh',
-				position: 'fixed',
-				top: 0,
-				left: 0,
-				backgroundColor: 'black',
-			}}></div>
+const Layout = ({ teams, loading }) =>
+	loading ? (
+		<Loader />
 	) : (
-		<ul>
+		<div>
 			<h1>Найдено команд: {teams?.length}</h1>
-			{teams?.map(({ title }) => (
-				<li key={title}>{title}</li>
-			))}
-		</ul>
+			<List teams={teams} />
+		</div>
 	);
-};
 
 export default Layout;
 

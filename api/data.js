@@ -55,7 +55,7 @@ const parser = (page) => {
 			attack: team.querySelector('[data-title="ATT"]').innerHTML,
 			midfield: team.querySelector('[data-title="MID"]').innerHTML,
 			defence: team.querySelector('[data-title="DEF"]').innerHTML,
-			all: team.querySelector('[data-title="OVR"]').innerHTML,
+			all: team.querySelector('[data-title="OVR"] span').innerHTML,
 		};
 
 		return {
