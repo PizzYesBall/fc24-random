@@ -1,0 +1,79 @@
+.card {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid #f4f4f4;
+	height: 27.5vh;
+	margin-bottom: 8px;
+	border-radius: 8px;
+	padding: 4px;
+
+	&__img {
+		width: 30%;
+		flex-shrink: 0;
+		position: relative;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center;
+		}
+
+		.badge-all {
+			font-size: 20px;
+			line-height: 1;
+			margin: 0 4px 0 0;
+		}
+	}
+
+	&__inner {
+		width: 65%;
+		display: flex;
+		flex-direction: column;
+		line-height: 1.1;
+		align-self: center;
+	}
+
+	&__stat {
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		line-height: 1;
+	}
+}
+
+span {
+	color: gold;
+}
+
+.badge {
+	border-radius: 0.25rem;
+	color: white;
+	text-align: center;
+	font-size: 14px;
+	margin: auto 2px;
+	padding: 0.25rem;
+
+	&.r1 {
+		background-color: #239454;
+	}
+
+	&.r2 {
+		background-color: #8dc153;
+	}
+
+	&.r3 {
+		background-color: #f6bb43;
+	}
+
+	&.r4 {
+		background-color: #e77e23;
+	}
+
+	&.r5 {
+		background-color: #e9573e;
+	}
+}

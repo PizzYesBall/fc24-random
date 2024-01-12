@@ -1,0 +1,21 @@
+button {
+	padding: 8px 24px;
+	margin: 0 auto;
+	height: 60px;
+	font-size: 24px;
+	background-color: goldenrod;
+	color: midnightblue;
+	border: none;
+	font-weight: bold;
+	letter-spacing: 0.15em;
+	clip-path: polygon(
+		0 8px,
+		8px 0,
+		calc(100% - 8px) 0,
+		100% 8px,
+		100% calc(100% - 8px),
+		calc(100% - 8px) 100%,
+		8px 100%,
+		0 calc(100% - 8px)
+	);
+}

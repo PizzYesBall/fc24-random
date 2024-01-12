@@ -3,14 +3,7 @@ import { Loader } from './Loader';
 import { List } from './List';
 
 const Layout = ({ teams, loading }) =>
-	loading ? (
-		<Loader />
-	) : (
-		<div>
-			<h1>Найдено команд: {teams?.length}</h1>
-			<List teams={teams} />
-		</div>
-	);
+	loading ? <Loader /> : <List teams={teams} />;
 
 export default Layout;
 

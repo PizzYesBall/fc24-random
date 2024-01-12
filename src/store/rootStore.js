@@ -11,23 +11,20 @@ class RootStore {
 
 	async init() {
 		await fetch('http://localhost:4000/data')
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				}
-				// throw new Error('Something went wrong');
-			})
+			.then((response) => response.json())
 			.then((data) => {
-				this.teams = data;
+				this.dataEdit(data);
 				this.loading = false;
 			})
 			.catch((error) => {
 				setTimeout(() => this.init(), 1000);
 			});
-		await this.dataEdit();
 	}
 
-	dataEdit() {
+	dataEdit(data) {
+		this.teams = data.filter(
+			({ league }) => league !== 'Free Agents League'
+		);
 		this.teams = this.teams.map((el) => ({
 			...el,
 			country: this.addCountry(el.league),
@@ -38,97 +35,97 @@ class RootStore {
 		let country = '';
 
 		switch (league) {
-			case 'Premier League':
-			case 'EFL Championship':
-			case 'EFL League One':
-			case 'EFL League Two':
+			case 'England Premier League (1)':
+			case 'England Championship (2)':
+			case 'England League One (3)':
+			case 'England League Two (4)':
 				country = 'Англия';
 				break;
-			case 'Bundesliga':
-			case 'Bundesliga 2':
-			case '3. Liga':
+			case 'Germany 1. Bundesliga (1)':
+			case 'Germany 2. Bundesliga (2)':
+			case 'Germany 3. Liga (3)':
 				country = 'Германия';
 				break;
-			case 'LaLiga Santander':
-			case 'LaLiga SmartBank':
+			case 'Spain Primera Divisi처n (1)':
+			case 'Spain Segunda Divisi처n (2)':
 				country = 'Испания';
 				break;
-			case 'Ligue 1 Uber Eats':
-			case 'Ligue 2 BKT':
+			case 'France Ligue 1 (1)':
+			case 'France Ligue 2 (2)':
 				country = 'Франция';
 				break;
-			case 'Serie A TIM':
-			case 'Serie BKT':
+			case 'Italy Serie A (1)':
+			case 'Italy Serie B (2)':
 				country = 'Италия';
 				break;
-			case 'Liga Portugal':
+			case 'Portugal Primeira Liga (1)':
 				country = 'Португалия';
 				break;
-			case 'Eredivisie':
+			case 'Holland Eredivisie (1)':
 				country = 'Нидерланды';
 				break;
-			case 'Süper Lig':
+			case 'Turkey S체per Lig (1)':
 				country = 'Турция';
 				break;
-			case 'LPF':
+			case 'Argentina Primera Divisi처n (1)':
 				country = 'Аргентина';
 				break;
-			case '1A Pro League':
+			case 'Belgium Pro League (1)':
 				country = 'Бельгия';
 				break;
-			case 'cinch Prem':
+			case 'Scotland Premiership (1)':
 				country = 'Шотландия';
 				break;
-			case 'Libertadores':
-			case 'Sudamericana':
+			case 'CONMEBOL Libertadores':
+			case 'CONMEBOL Sudamericana':
 				country = 'Южная Америка';
 				break;
-			case 'ROSHN Saudi League':
+			case 'Saudi Pro League (1)':
 				country = 'Саудовская Аравия';
 				break;
-			case 'MLS':
+			case 'USA Major League Soccer (1)':
 				country = 'США/Канада';
 				break;
-			case '3F Superliga':
+			case 'Denmark Superliga (1)':
 				country = 'Дания';
 				break;
-			case 'Ö. Bundesliga':
+			case 'Austria Bundesliga (1)':
 				country = 'Австрия';
 				break;
-			case 'CSSL ':
+			case 'Switzerland Super League (1)':
 				country = 'Швейцария';
 				break;
-			case 'K League 1':
+			case 'Korea K League 1 (1)':
 				country = 'Корея';
 				break;
-			case 'PKO Ekstraklasa':
+			case 'Poland Ekstraklasa (1)':
 				country = 'Польша';
 				break;
-			case 'CSL':
+			case 'China Super League (1)':
 				country = 'Китай';
 				break;
-			case 'Eliteserien':
+			case 'Norway Eliteserien (1)':
 				country = 'Норвегия';
 				break;
-			case 'Allsvenskan':
+			case 'Sweden Allsvenskan (1)':
 				country = 'Швеция';
 				break;
-			case 'SUPERLIGA':
+			case 'Romania Liga I (1)':
 				country = 'Румыния';
 				break;
-			case 'A-League':
+			case 'Australia A-League (1)':
 				country = 'Австралия';
 				break;
-			case 'SSE Airtricity PD':
+			case 'Rep. Ireland Premier Division (1)':
 				country = 'Ирландия';
 				break;
-			case 'Hero ISL':
+			case 'Indian Super League (1)':
 				country = 'Индия';
 				break;
 			case 'Rest of World':
 				country = 'Остальной мир';
 				break;
-			case "Men's National":
+			case 'International':
 				country = 'Сборные';
 				break;
 			default:

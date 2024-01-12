@@ -1,23 +1,55 @@
-import { useEffect, useState } from 'react';
+import '../styles/button.scss';
+
+import { useState } from 'react';
 import { Card } from './Card';
+
+const LIMIT = 3;
 
 export const List = ({ teams }) => {
 	const [currentTeams, setCurrentTeams] = useState([]);
+	const [count, setCount] = useState(0);
 
-	useEffect(() => {
-		if (teams?.length) {
-			let arr = [];
-			let t = [];
+	const shuffle = () => {
+		let arr = [];
+		let t = [];
 
-			while (arr.length < 3) {
-				arr.push(Math.floor(Math.random() * teams.length));
-				new Set(arr);
-			}
-
-			arr.forEach((idx) => t.push(teams[idx]));
-			setCurrentTeams(t);
+		while (arr.length < 3) {
+			arr.push(Math.floor(Math.random() * teams.length));
+			new Set(arr);
 		}
-	}, [teams, teams?.length]);
 
-	return currentTeams.map((team) => <Card team={team} />);
+		arr.forEach((idx) => t.push(teams[idx]));
+		setCurrentTeams(t);
+		setCount(count + 1);
+	};
+
+	const restart = () => {
+		setCount(0);
+		setCurrentTeams([]);
+	};
+
+	return (
+		<>
+			<h1>Найдено команд: {teams?.length}</h1>
+			<h2>
+				Попыток {count}/{LIMIT}
+			</h2>
+			{count === LIMIT ? (
+				<button
+					className='button'
+					onClick={restart}>
+					По новой давай
+				</button>
+			) : (
+				<button
+					className='button'
+					onClick={shuffle}>
+					Перемешать
+				</button>
+			)}
+			{currentTeams.map((team) => (
+				<Card team={team} />
+			))}
+		</>
+	);
 };

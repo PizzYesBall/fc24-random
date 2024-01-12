@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "fc24_rand",
+  "name": "FC 24 Random",
   "icons": [
     {
       "src": "favicon.ico",
