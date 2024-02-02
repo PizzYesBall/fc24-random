@@ -1,0 +1,33 @@
+.loader {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #000;
+
+	&__icon {
+		width: 30vmin;
+		height: 30vmin;
+	}
+
+	&__title {
+		color: #07f468;
+		margin: 2vmin 0 0;
+	}
+
+	&__dots {
+		clip-path: inset(0 100% 0 0);
+		animation: loading 2s steps(4) infinite;
+	}
+}
+
+@keyframes loading {
+	to {
+		clip-path: inset(0 calc(-100% / 3) 0 0);
+	}
+}
