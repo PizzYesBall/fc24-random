@@ -1,4 +1,5 @@
 import '../styles/button.scss';
+import '../styles/list.scss';
 
 import { useState } from 'react';
 import { Card } from './Card';
@@ -29,27 +30,34 @@ export const List = ({ teams }) => {
 	};
 
 	return (
-		<>
-			<h1>Найдено команд: {teams?.length}</h1>
-			<h2>
-				Попыток {count}/{LIMIT}
-			</h2>
-			{count === LIMIT ? (
-				<button
-					className='button'
-					onClick={restart}>
-					По новой давай
-				</button>
-			) : (
-				<button
-					className='button'
-					onClick={shuffle}>
-					Перемешать
-				</button>
-			)}
-			{currentTeams.map((team) => (
-				<Card team={team} />
-			))}
-		</>
+		<div className='list'>
+			<div className='list__header'>
+				<h2 className='list__counter'>
+					Попыток {count}/{LIMIT}
+				</h2>
+
+				{count === LIMIT ? (
+					<button
+						className='button'
+						onClick={restart}>
+						По новой давай
+					</button>
+				) : (
+					<button
+						className='button'
+						onClick={shuffle}>
+						Перемешать
+					</button>
+				)}
+			</div>
+			<ul className='list__list'>
+				{currentTeams.map((team) => (
+					<Card
+						team={team}
+						count={LIMIT}
+					/>
+				))}
+			</ul>
+		</div>
 	);
 };

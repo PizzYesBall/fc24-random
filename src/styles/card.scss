@@ -2,9 +2,6 @@
 	display: flex;
 	justify-content: space-between;
 	border: 1px solid #f4f4f4;
-	height: 27.5vh;
-	margin-bottom: 8px;
-	border-radius: 8px;
 	padding: 4px;
 
 	&__img {
@@ -43,10 +40,6 @@
 		width: 100%;
 		line-height: 1;
 	}
-
-	span {
-		color: gold;
-	}
 }
 
 .badge {
@@ -76,4 +69,8 @@
 	&.r5 {
 		background-color: #e9573e;
 	}
+}
+
+.badge-all {
+	color: gold;
 }

@@ -1,16 +1,12 @@
 import { observer } from 'mobx-react';
-import Layout from './components/Layout';
 import rootStore from './store/rootStore';
+import { Loader } from './components/Loader';
+import { List } from './components/List';
 
 const App = () => {
 	const { teams, loading } = rootStore;
 
-	return (
-		<Layout
-			teams={teams}
-			loading={loading}
-		/>
-	);
+	return loading ? <Loader /> : <List teams={teams} />;
 };
 
 export default observer(App);

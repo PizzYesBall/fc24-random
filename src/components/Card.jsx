@@ -1,10 +1,14 @@
 import '../styles/card.scss';
 
-export const Card = ({ team }) => {
+export const Card = ({ team, count }) => {
 	const { logo, title, league, stars, country, stat } = team;
 	// const { attack, midfield, defence, all } = stat;
 	return (
-		<div className='card'>
+		<li
+			className='card'
+			style={{
+				height: `calc(95% / ${count})`,
+			}}>
 			<div className='card__img'>
 				<img
 					src={logo}
@@ -21,14 +25,14 @@ export const Card = ({ team }) => {
 				<h4>{league}</h4>
 				<h2>{title}</h2>
 				<span>
+					{stat?.all}
 					<span
 						className='badge-all'
 						dangerouslySetInnerHTML={{
 							__html: stars,
 						}}></span>
-					{stat?.all}
 				</span>
 			</div>
-		</div>
+		</li>
 	);
 };
